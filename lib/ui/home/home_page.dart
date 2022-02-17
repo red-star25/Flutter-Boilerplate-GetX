@@ -14,51 +14,54 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(
         title: Text(
           'title'.tr,
-          style: TextStyle(fontSize: 14.sp),
         ),
       ),
-      body: GetBuilder<HomeController>(
+      body: GetX<HomeController>(
         initState: (state) async {
           await Get.find<HomeController>().getAll();
         },
-        builder: (homeController) => ScreenTypeLayout.builder(
-          breakpoints: const ScreenBreakpoints(
-            tablet: Dimens.tabletScreenSize,
-            desktop: Dimens.desktopScreenSize,
-            watch: Dimens.mobileScreenSize,
-          ),
-          mobile: (BuildContext context) =>
-              _buildMobile(context, homeController),
-          desktop: (BuildContext context) =>
-              _buildDesktop(context, homeController),
-          tablet: (BuildContext context) =>
-              _buildTablet(context, homeController),
-        ),
+        builder: (homeController) => homeController.postList.length > 1
+            ? ScreenTypeLayout.builder(
+                breakpoints: const ScreenBreakpoints(
+                  tablet: Dimens.tabletScreenSize,
+                  desktop: Dimens.desktopScreenSize,
+                  watch: Dimens.mobileScreenSize,
+                ),
+                mobile: (BuildContext context) =>
+                    _buildMobile(context, homeController),
+                desktop: (BuildContext context) =>
+                    _buildDesktop(context, homeController),
+                tablet: (BuildContext context) =>
+                    _buildTablet(context, homeController),
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
     );
   }
 
   _buildMobile(BuildContext context, HomeController homeController) {
-    return ListView.builder(
-      itemCount: homeController.postList.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: ListTile(
-              title: Text(
-                homeController.postList[index].title ?? 'a',
-                style: TextStyle(fontSize: 16.sp),
+    return Obx(() => ListView.builder(
+          itemCount: homeController.postList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  title: Text(
+                    homeController.postList[index].title ?? 'a',
+                    style: TextStyle(fontSize: 16.sp),
+                  ),
+                  subtitle: Text(
+                    homeController.postList[index].body ?? 'b',
+                    style: TextStyle(fontSize: 12.sp),
+                  ),
+                ),
               ),
-              subtitle: Text(
-                homeController.postList[index].body ?? 'b',
-                style: TextStyle(fontSize: 12.sp),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+            );
+          },
+        ));
   }
 
   _buildTablet(BuildContext context, HomeController homeController) {
