@@ -178,6 +178,16 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+-------------
+
+## Splash Screen
+In order to use your logo in the splash screen. Simply update the `logo.png` inside `assets/images/` with your logo and run the following command.
+```
+flutter clean && flutter pub get && flutter pub run flutter_native_splash:create
+```
+
+---------------
+
 ## Responsiveness
 
 The project is built with [flutter_screen_util], [responsive_builder] in order to make the application responsive.
