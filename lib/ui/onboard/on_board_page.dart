@@ -10,11 +10,12 @@ class OnBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _authController = Get.find<AuthController>();
-
     return Obx(() {
-      return _authController.isLogged.value
-          ? const LoginPage()
-          : const HomePage();
+      if (!_authController.isLogged.value) {
+        return const LoginPage();
+      } else {
+        return const HomePage();
+      }
     });
   }
 }
