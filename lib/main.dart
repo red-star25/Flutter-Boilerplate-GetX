@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         fallbackLocale: const Locale('en', 'US'),
         title: 'Getx Boilerplate',
         // initialRoute: Routes.ONBOARD,
-        initialRoute: Routes.HOME,
+        initialRoute: Routes.LOGIN,
         theme: themeData,
         defaultTransition: Transition.fade,
         getPages: AppPages.pages,
