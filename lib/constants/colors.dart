@@ -25,6 +25,12 @@ class AppColors {
   static Color green = const Color(0xffA4C639);
   static Color tosca = const Color(0xff39C6A4);
 
+  // TextInput
+  static const primaryTextInputColor = Color(0xff4338CA);
+  static const secondaryTextInputColor = Color(0xff6D28D9);
+  static const accentTextInputColor = Color(0xffffffff);
+  static const errorTextInputColor = Color(0xffEF4444);
+
   static LinearGradient getGradient(Color colorStart, Color colorEnd) {
     return LinearGradient(
       colors: [colorStart, colorEnd],
