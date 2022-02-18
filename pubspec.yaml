@@ -60,6 +60,7 @@ dependencies:
 
   # The following package is used to render different layout based on the screen sizes.
   responsive_builder: ^0.4.2
+  email_validator: ^2.0.1
 
 dev_dependencies:
   flutter_test:

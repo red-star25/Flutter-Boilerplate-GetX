@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:base_project_getx/constants/app_theme.dart';
 import 'package:base_project_getx/di/service_locator.dart';
 import 'package:base_project_getx/utils/routes/pages.dart';
@@ -12,9 +14,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
 
-  service.SystemChrome.setPreferredOrientations(
-      [service.DeviceOrientation.portraitUp]).then((_) {
-    runApp(const MyApp());
+  runZonedGuarded(() {
+    service.SystemChrome.setPreferredOrientations(
+        [service.DeviceOrientation.portraitUp]).then((_) {
+      runApp(const MyApp());
+    });
+  }, (error, stackTrace) {
+    debugPrint(error.toString());
+    debugPrint(stackTrace.toString());
   });
 }
 
@@ -30,8 +37,8 @@ class MyApp extends StatelessWidget {
         locale: const Locale('en', 'US'),
         fallbackLocale: const Locale('en', 'US'),
         title: 'Getx Boilerplate',
-        initialRoute: Routes.HOME,
-        theme: AppThemes.lightTheme,
+        initialRoute: Routes.ONBOARD,
+        theme: themeData,
         defaultTransition: Transition.fade,
         getPages: AppPages.pages,
         translationsKeys: AppTranslation.translations,
