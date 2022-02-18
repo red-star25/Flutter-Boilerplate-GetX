@@ -12,7 +12,7 @@ class SharedPreferenceHelper {
   SharedPreferenceHelper(this._sharedPreference);
 
   // General Methods: ----------------------------------------------------------
-  Future<String?> get authToken async {
+  String? get authToken {
     return _sharedPreference.getString(Preferences.auth_token);
   }
 
@@ -49,5 +49,9 @@ class SharedPreferenceHelper {
 
   Future<void> changeLanguage(String language) {
     return _sharedPreference.setString(Preferences.current_language, language);
+  }
+
+  Future clear() async {
+    return await _sharedPreference.clear();
   }
 }

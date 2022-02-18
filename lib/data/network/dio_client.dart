@@ -1,4 +1,6 @@
+import 'package:base_project_getx/data/network/constants/endpoints.dart';
 import 'package:base_project_getx/data/network/interceptor/dio_interceptor.dart';
+import 'package:base_project_getx/utils/dio/dio_error_util.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,7 +10,22 @@ class DioClient {
 
   // injecting dio instance
   DioClient(this._dio) {
-    _dio.interceptors.add(DioInterceptor());
+    _dio
+      ..options.baseUrl = Endpoints.baseUrl
+      ..options.connectTimeout = Endpoints.connectionTimeout
+      ..options.receiveTimeout = Endpoints.receiveTimeout
+      ..options.responseType = ResponseType.json
+      ..options.headers = {
+        'Content-Type': 'application/json; charset=utf-8',
+      }
+      ..interceptors.add(LogInterceptor(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+      ))
+      ..interceptors.add(DioInterceptor());
   }
   // Get:-----------------------------------------------------------------------
   Future<dynamic> get(
@@ -18,19 +35,20 @@ class DioClient {
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
-    try {
-      final Response response = await _dio.get(
-        uri,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response.data;
-    } catch (e) {
-      debugPrint(e.toString());
-      rethrow;
-    }
+    final Response response = await _dio
+        .get(
+      uri,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+    )
+        .catchError((errorMessage) {
+      errorMessage = DioErrorUtil.handleError(errorMessage);
+      debugPrint("ERROR in API RES : " + errorMessage);
+      throw errorMessage;
+    });
+    return response.data;
   }
 
   // Post:----------------------------------------------------------------------
@@ -43,20 +61,21 @@ class DioClient {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    try {
-      final Response response = await _dio.post(
-        uri,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response.data;
-    } catch (e) {
-      rethrow;
-    }
+    final Response response = await _dio
+        .post(
+      uri,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    )
+        .catchError((e) {
+      final errorMessage = DioErrorUtil.handleError(e);
+      debugPrint("Error in DIO CLIENT: $errorMessage");
+    });
+    return response.data;
   }
 
   // Put:-----------------------------------------------------------------------

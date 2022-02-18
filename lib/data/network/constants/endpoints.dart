@@ -10,6 +10,13 @@ class Endpoints {
   // connectTimeout
   static const int connectionTimeout = 30000;
 
-  // booking endpoints
+  // post endpoints
   static const String getPosts = baseUrl + "/posts";
+
+  // auth endpoints
+  static const String login = baseUrl + '/login';
+  static const String register = baseUrl + '/register';
+  static const String logout = baseUrl + '/logout';
+  static const String forgotPassword = baseUrl + '/forgot-password';
+  static const String resetPassword = baseUrl + '/reset-password';
 }

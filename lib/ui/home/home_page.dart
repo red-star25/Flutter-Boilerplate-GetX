@@ -1,4 +1,8 @@
 import 'package:base_project_getx/constants/dimens.dart';
+import 'package:base_project_getx/ui/global_widgets/base_app_bar.dart';
+import 'package:base_project_getx/ui/global_widgets/bottom_nav.dart';
+import 'package:base_project_getx/ui/global_widgets/drawer.dart';
+import 'package:base_project_getx/ui/global_widgets/dropdown_menu.dart';
 import 'package:base_project_getx/ui/home/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,10 +15,26 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      drawer: const CustomDrawer(),
+      bottomNavigationBar: const BottomNavBar(),
+      appBar: BaseAppBar(
         title: Text(
           'title'.tr,
+          style: const TextStyle(
+            fontSize: 24,
+          ),
         ),
+        appBar: AppBar(),
+        widgets: const [
+          CustomDropDownMenu(
+            menuList: [
+              PopupMenuItem(
+                child: Text("Logout"),
+                value: 1,
+              ),
+            ],
+          )
+        ],
       ),
       body: GetX<HomeController>(
         initState: (state) async {

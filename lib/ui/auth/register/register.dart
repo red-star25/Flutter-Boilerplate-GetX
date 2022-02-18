@@ -1,0 +1,11 @@
+export 'package:base_project_getx/constants/colors.dart';
+export 'package:base_project_getx/constants/dimens.dart';
+export 'package:base_project_getx/constants/strings.dart';
+export 'package:base_project_getx/ui/auth/controller.dart';
+export 'package:base_project_getx/ui/global_widgets/custom_buttons.dart';
+export 'package:base_project_getx/ui/global_widgets/custom_checkbox.dart';
+export 'package:base_project_getx/ui/global_widgets/input_fields.dart';
+export 'package:base_project_getx/ui/global_widgets/snackbars.dart';
+export 'package:flutter/material.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:get/get.dart';
