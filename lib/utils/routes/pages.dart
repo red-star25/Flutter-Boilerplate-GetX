@@ -39,6 +39,7 @@ class AppPages {
     GetPage(
       name: Routes.ONBOARD,
       page: () => const OnBoard(),
+      binding: AuthBindings(),
     ),
   ];
 }
