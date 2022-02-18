@@ -4,6 +4,7 @@ import 'package:base_project_getx/ui/global_widgets/bottom_nav.dart';
 import 'package:base_project_getx/ui/global_widgets/drawer.dart';
 import 'package:base_project_getx/ui/global_widgets/dropdown_menu.dart';
 import 'package:base_project_getx/ui/home/controller.dart';
+import 'package:base_project_getx/utils/flutter/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -65,21 +66,18 @@ class HomePage extends GetView<HomeController> {
     return Obx(() => ListView.builder(
           itemCount: homeController.postList.length,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: ListTile(
-                  title: Text(
-                    homeController.postList[index].title ?? 'a',
-                    style: TextStyle(fontSize: 16.sp),
-                  ),
-                  subtitle: Text(
-                    homeController.postList[index].body ?? 'b',
-                    style: TextStyle(fontSize: 12.sp),
-                  ),
+            return Card(
+              child: ListTile(
+                title: Text(
+                  homeController.postList[index].title ?? 'a',
+                  style: TextStyle(fontSize: 16.sp),
+                ),
+                subtitle: Text(
+                  homeController.postList[index].body ?? 'b',
+                  style: TextStyle(fontSize: 12.sp),
                 ),
               ),
-            );
+            ).px8;
           },
         ));
   }
@@ -94,21 +92,18 @@ class HomePage extends GetView<HomeController> {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: ListTile(
-              title: Text(
-                homeController.postList[index].title ?? 'a',
-                style: TextStyle(fontSize: 10.sp),
-              ),
-              subtitle: Text(
-                homeController.postList[index].body ?? 'b',
-                style: TextStyle(fontSize: 8.sp),
-              ),
+        return Card(
+          child: ListTile(
+            title: Text(
+              homeController.postList[index].title ?? 'a',
+              style: TextStyle(fontSize: 10.sp),
+            ),
+            subtitle: Text(
+              homeController.postList[index].body ?? 'b',
+              style: TextStyle(fontSize: 8.sp),
             ),
           ),
-        );
+        ).px8;
       },
     );
   }
@@ -123,21 +118,18 @@ class HomePage extends GetView<HomeController> {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: ListTile(
-              title: Text(
-                homeController.postList[index].title ?? 'a',
-                style: TextStyle(fontSize: 8.sp),
-              ),
-              subtitle: Text(
-                homeController.postList[index].body ?? 'b',
-                style: TextStyle(fontSize: 6.sp),
-              ),
+        return Card(
+          child: ListTile(
+            title: Text(
+              homeController.postList[index].title ?? 'a',
+              style: TextStyle(fontSize: 8.sp),
+            ),
+            subtitle: Text(
+              homeController.postList[index].body ?? 'b',
+              style: TextStyle(fontSize: 6.sp),
             ),
           ),
-        );
+        ).px8;
       },
     );
   }

@@ -1,3 +1,5 @@
+import 'package:base_project_getx/utils/flutter/extension.dart';
+import 'package:base_project_getx/utils/flutter/utilities/border_radius.dart';
 import 'package:flutter/material.dart';
 
 class TabPair {
@@ -75,42 +77,32 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          // give the tab bar a height [can change height to preferred height]
-          Container(
-            height: 45,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(
-                25.0,
+    return Column(
+      children: [
+        // give the tab bar a height [can change height to preferred height]
+        Container(
+          height: 45,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: FxRadius.all(25.0),
+          ),
+          child: TabBar(
+              controller: _tabController,
+              // give the indicator a decoration (color and border radius)
+              indicator: BoxDecoration(
+                borderRadius: FxRadius.all(25.0),
+                color: const Color(0xFFFF8527),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: TabBar(
-                  controller: _tabController,
-                  // give the indicator a decoration (color and border radius)
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      25.0,
-                    ),
-                    color: const Color(0xFFFF8527),
-                  ),
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.black,
-                  tabs: TabPairs.map((tabPair) => tabPair.tab).toList()),
-            ),
-          ),
-          Expanded(
-            child: TabBarView(
-                controller: _tabController,
-                children: TabPairs.map((tabPair) => tabPair.view).toList()),
-          ),
-        ],
-      ),
-    );
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.black,
+              tabs: TabPairs.map((tabPair) => tabPair.tab).toList()),
+        ).px8,
+        Expanded(
+          child: TabBarView(
+              controller: _tabController,
+              children: TabPairs.map((tabPair) => tabPair.view).toList()),
+        ),
+      ],
+    ).px8;
   }
 }

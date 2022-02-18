@@ -1,3 +1,4 @@
+import 'package:base_project_getx/utils/flutter/utilities/border_radius.dart';
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {
@@ -33,16 +34,16 @@ class SearchInput extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.grey),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          border: OutlineInputBorder(
+            borderRadius: FxRadius.all(15.0),
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 1.0),
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 1.0),
+            borderRadius: FxRadius.all(15.0),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 2.0),
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 2.0),
+            borderRadius: FxRadius.all(15.0),
           ),
         ),
       ),
@@ -86,16 +87,16 @@ class SearchInputMiddleText extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.black.withOpacity(.75)),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          border: OutlineInputBorder(
+            borderRadius: FxRadius.all(15.0),
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 1.0),
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 1.0),
+            borderRadius: FxRadius.all(15.0),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 2.0),
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 2.0),
+            borderRadius: FxRadius.all(15.0),
           ),
         ),
       ),
@@ -137,16 +138,16 @@ class RoundedSearchInput extends StatelessWidget {
               const TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(45.0)),
+          border: OutlineInputBorder(
+            borderRadius: FxRadius.all(45.0),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey[300]!, width: 1.0),
-            borderRadius: const BorderRadius.all(Radius.circular(45.0)),
+            borderRadius: FxRadius.all(45.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey[400]!, width: 1.5),
-            borderRadius: const BorderRadius.all(Radius.circular(45.0)),
+            borderRadius: FxRadius.all(45.0),
           ),
         ),
       ),

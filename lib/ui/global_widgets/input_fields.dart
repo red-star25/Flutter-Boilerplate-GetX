@@ -1,5 +1,6 @@
 import 'package:base_project_getx/constants/colors.dart';
 import 'package:base_project_getx/constants/strings.dart';
+import 'package:base_project_getx/utils/flutter/utilities/border_radius.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -24,25 +25,25 @@ class EmailTextField extends StatelessWidget {
         hintStyle: TextStyle(color: Colors.grey.withOpacity(.75)),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-        border: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.secondaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.secondaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        errorBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.errorTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.errorTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
       ),
       validator: (val) {
@@ -80,25 +81,25 @@ class CustomTextField extends StatelessWidget {
         hintStyle: TextStyle(color: Colors.grey.withOpacity(.75)),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-        border: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.secondaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.secondaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        errorBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.errorTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.errorTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
       ),
       validator: (val) {
@@ -249,25 +250,25 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         hintStyle: TextStyle(color: Colors.grey.withOpacity(.75)),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-        border: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.secondaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.secondaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        errorBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.errorTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.errorTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.primaryTextInputColor, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: AppColors.primaryTextInputColor, width: 1.0),
+          borderRadius: FxRadius.all(10.0),
         ),
         suffixIcon: InkWell(
           onTap: () => setState(

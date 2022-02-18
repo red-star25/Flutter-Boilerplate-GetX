@@ -1,4 +1,6 @@
 import 'package:base_project_getx/ui/auth/register/register.dart';
+import 'package:base_project_getx/utils/dart_extension/dart_utils.dart';
+import 'package:base_project_getx/utils/flutter/extension.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   ForgotPasswordPage({Key? key}) : super(key: key);
@@ -18,66 +20,58 @@ class ForgotPasswordPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Center(
-        child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 40.0, 24.0, 0),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height,
-                maxWidth: Dimens.mobileScreenSize,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height,
+            maxWidth: Dimens.mobileScreenSize,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          Strings.forgotPasswordLabel,
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Divider()
-                      ],
+                    Text(
+                      Strings.forgotPasswordLabel,
+                      style: Theme.of(context).textTheme.headline2,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          CustomTextField(
-                            inputController: _forgotPasswordController,
-                            hintText: "Enter you email id",
-                            errorText: "Please enter your email id",
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomPrimaryButton(
-                      buttonColor: AppColors.darkBlue,
-                      textValue: "Submit",
-                      textColor: AppColors.white,
-                      onClick: () {
-                        if (_formKey.currentState!.validate()) {
-                          _authController.forgotPassword(
-                            email: _forgotPasswordController.text,
-                          );
-                        }
-                      },
-                    )
+                    20.szh(),
+                    const Divider()
                   ],
                 ),
-              ),
-            )),
-      ),
+                10.szh(),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        inputController: _forgotPasswordController,
+                        hintText: "Enter you email id",
+                        errorText: "Please enter your email id",
+                      )
+                    ],
+                  ),
+                ),
+                20.szh(),
+                CustomPrimaryButton(
+                  buttonColor: AppColors.darkBlue,
+                  textValue: "Submit",
+                  textColor: AppColors.white,
+                  onClick: () {
+                    if (_formKey.currentState!.validate()) {
+                      _authController.forgotPassword(
+                        email: _forgotPasswordController.text,
+                      );
+                    }
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+      ).fromLTRB(24, 40.0, 24.0, 0),
     );
   }
 }

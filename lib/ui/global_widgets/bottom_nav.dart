@@ -1,4 +1,5 @@
 import 'package:base_project_getx/ui/auth/register/register.dart';
+import 'package:base_project_getx/utils/flutter/extension.dart';
 
 enum BottomNavBarItem { home, search, cart, profile }
 
@@ -25,52 +26,48 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: SizedBox(
         height: 56.h,
         width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconBottomBar(
-                text: "Home",
-                icon: Icons.home,
-                selected:
-                    currentSelectedItem == BottomNavBarItem.home ? true : false,
-                onPressed: () {
-                  onBottomNavItemPress(BottomNavBarItem.home);
-                },
-              ),
-              IconBottomBar(
-                text: "Search",
-                icon: Icons.search_outlined,
-                selected: currentSelectedItem == BottomNavBarItem.search
-                    ? true
-                    : false,
-                onPressed: () {
-                  onBottomNavItemPress(BottomNavBarItem.search);
-                },
-              ),
-              IconBottomBar(
-                text: "Cart",
-                icon: Icons.local_grocery_store_outlined,
-                selected:
-                    currentSelectedItem == BottomNavBarItem.cart ? true : false,
-                onPressed: () {
-                  onBottomNavItemPress(BottomNavBarItem.cart);
-                },
-              ),
-              IconBottomBar(
-                text: "Profile",
-                icon: Icons.person,
-                selected: currentSelectedItem == BottomNavBarItem.profile
-                    ? true
-                    : false,
-                onPressed: () {
-                  onBottomNavItemPress(BottomNavBarItem.profile);
-                },
-              )
-            ],
-          ),
-        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconBottomBar(
+              text: "Home",
+              icon: Icons.home,
+              selected:
+                  currentSelectedItem == BottomNavBarItem.home ? true : false,
+              onPressed: () {
+                onBottomNavItemPress(BottomNavBarItem.home);
+              },
+            ),
+            IconBottomBar(
+              text: "Search",
+              icon: Icons.search_outlined,
+              selected:
+                  currentSelectedItem == BottomNavBarItem.search ? true : false,
+              onPressed: () {
+                onBottomNavItemPress(BottomNavBarItem.search);
+              },
+            ),
+            IconBottomBar(
+              text: "Cart",
+              icon: Icons.local_grocery_store_outlined,
+              selected:
+                  currentSelectedItem == BottomNavBarItem.cart ? true : false,
+              onPressed: () {
+                onBottomNavItemPress(BottomNavBarItem.cart);
+              },
+            ),
+            IconBottomBar(
+              text: "Profile",
+              icon: Icons.person,
+              selected: currentSelectedItem == BottomNavBarItem.profile
+                  ? true
+                  : false,
+              onPressed: () {
+                onBottomNavItemPress(BottomNavBarItem.profile);
+              },
+            )
+          ],
+        ).px24,
       ),
     );
   }

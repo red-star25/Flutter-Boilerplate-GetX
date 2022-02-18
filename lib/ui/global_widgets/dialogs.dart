@@ -1,3 +1,5 @@
+import 'package:base_project_getx/utils/dart_extension/dart_utils.dart';
+import 'package:base_project_getx/utils/flutter/utilities/border_radius.dart';
 import 'package:flutter/material.dart';
 
 class SimpleCustomDialog extends StatelessWidget {
@@ -9,13 +11,13 @@ class SimpleCustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(borderRadius: FxRadius.all(15)),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.4,
         height: MediaQuery.of(context).size.height / 4,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: FxRadius.all(15.0),
             boxShadow: [
               BoxShadow(
                   offset: const Offset(12, 26),
@@ -32,25 +34,19 @@ class SimpleCustomDialog extends StatelessWidget {
               child: Image.network(
                   "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/FlutterBricksLogo-Med.png?alt=media&token=7d03fedc-75b8-44d5-a4be-c1878de7ed52"),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            15.szh(),
             const Text("How are you doing?",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold)),
-            const SizedBox(
-              height: 3.5,
-            ),
+            3.5.szh(),
             const Text("This is a sub text, use it to clarify",
                 style: TextStyle(
                     color: Colors.grey,
                     fontSize: 12,
                     fontWeight: FontWeight.w300)),
-            const SizedBox(
-              height: 15,
-            ),
+            15.szh(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -97,12 +93,11 @@ class SimpleBtn1 extends StatelessWidget {
           alignment: Alignment.center,
           side: MaterialStateProperty.all(
               BorderSide(width: 1, color: primaryColor)),
-          padding: MaterialStateProperty.all(
-              const EdgeInsets.only(right: 25, left: 25, top: 0, bottom: 0)),
+          padding: MaterialStateProperty.all(const EdgeInsets.all(24)),
           backgroundColor: MaterialStateProperty.all(
               invertedColors ? accentColor : primaryColor),
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            RoundedRectangleBorder(borderRadius: FxRadius.all(15)),
           )),
       onPressed: onPressed,
       child: Text(

@@ -1,3 +1,5 @@
+import 'package:base_project_getx/utils/dart_extension/dart_utils.dart';
+import 'package:base_project_getx/utils/flutter/extension.dart';
 import 'package:base_project_getx/utils/routes/routes.dart';
 
 import './login.dart';
@@ -48,144 +50,118 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: Center(
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 40.0, 24.0, 0),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height,
-                maxWidth: Dimens.mobileScreenSize,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          Strings.loginHeading,
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Divider()
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Form(
-                      key: _loginFormKey,
-                      child: Column(
-                        children: [
-                          EmailTextField(
-                            inputController: emailController,
-                          ),
-                          const SizedBox(
-                            height: 14,
-                          ),
-                          PasswordInputField(
-                            textEditingController: passwordController,
-                          )
-                        ],
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height,
+              maxWidth: Dimens.mobileScreenSize,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        Strings.loginHeading,
+                        style: Theme.of(context).textTheme.headline2,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 22,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      20.szh(),
+                      const Divider()
+                    ],
+                  ),
+                  10.szh(),
+                  Form(
+                    key: _loginFormKey,
+                    child: Column(
                       children: [
-                        const CustomCheckbox(),
-                        const SizedBox(
-                          width: 12,
+                        EmailTextField(
+                          inputController: emailController,
                         ),
-                        Text(Strings.rememberMe,
-                            style: Theme.of(context).textTheme.bodyText2),
+                        14.szh(),
+                        PasswordInputField(
+                          textEditingController: passwordController,
+                        )
                       ],
                     ),
-                    const SizedBox(
-                      height: 32,
+                  ),
+                  22.szh(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const CustomCheckbox(),
+                      12.szh(),
+                      Text(Strings.rememberMe,
+                          style: Theme.of(context).textTheme.bodyText2),
+                    ],
+                  ),
+                  32.szh(),
+                  CustomPrimaryButton(
+                    buttonColor: AppColors.darkBlue,
+                    textValue: Strings.loginLabel,
+                    textColor: Colors.white,
+                    onClick: () {
+                      _loginRequested();
+                    },
+                  ),
+                  24.szh(),
+                  Center(
+                    child: Text(
+                      'OR',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6
+                          ?.copyWith(color: AppColors.grey),
                     ),
-                    CustomPrimaryButton(
-                      buttonColor: AppColors.darkBlue,
-                      textValue: Strings.loginLabel,
-                      textColor: Colors.white,
-                      onClick: () {
-                        _loginRequested();
-                      },
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Center(
-                      child: Text(
-                        'OR',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            ?.copyWith(color: AppColors.grey),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    // Google Sign In
-                    CustomPrimaryButton(
-                      buttonColor: AppColors.lightGrey,
-                      textValue: Strings.loginWithGoogle,
-                      textColor: AppColors.black,
-                      onClick: () {},
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          Strings.dontHaveAccount,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1
-                              ?.copyWith(color: AppColors.grey),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                          child: Text(
-                            Strings.registerLabel,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1
-                                ?.copyWith(color: AppColors.darkBlue),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/forgot-password');
-                      },
-                      child: Text(
-                        Strings.forgotPassword,
+                  ),
+                  24.szh(),
+                  // Google Sign In
+                  CustomPrimaryButton(
+                    buttonColor: AppColors.lightGrey,
+                    textValue: Strings.loginWithGoogle,
+                    textColor: AppColors.black,
+                    onClick: () {},
+                  ),
+                  50.szh(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        Strings.dontHaveAccount,
                         style: Theme.of(context)
                             .textTheme
                             .bodyText1
-                            ?.copyWith(color: AppColors.darkBlue, fontSize: 14),
+                            ?.copyWith(color: AppColors.grey),
                       ),
+                      Text(
+                        Strings.registerLabel,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            ?.copyWith(color: AppColors.darkBlue),
+                      ).onTap(() {
+                        Navigator.pushNamed(context, '/register');
+                      }),
+                    ],
+                  ),
+                  10.szh(),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/forgot-password');
+                    },
+                    child: Text(
+                      Strings.forgotPassword,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          ?.copyWith(color: AppColors.darkBlue, fontSize: 14),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ),
+          ).fromLTRB(24, 40.0, 24.0, 0),
         ),
       ),
     );

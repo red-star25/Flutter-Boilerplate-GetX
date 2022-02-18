@@ -1,3 +1,4 @@
+import 'package:base_project_getx/utils/flutter/utilities/border_radius.dart';
 import 'package:flutter/material.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
@@ -17,19 +18,19 @@ class CustomPrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(14.0),
+      borderRadius: FxRadius.all(14.0),
       elevation: 0,
       child: Container(
         height: 42,
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: BorderRadius.circular(14.0),
+          borderRadius: FxRadius.all(14.0),
         ),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
             onTap: onClick,
-            borderRadius: BorderRadius.circular(14.0),
+            borderRadius: FxRadius.all(14.0),
             child: Center(
               child: Text(
                 textValue,
