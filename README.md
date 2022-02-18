@@ -42,9 +42,11 @@ Now, lets dive into the lib folder which has the main code for the application.
 
 3- ui — Contains all the ui of your project, contains sub directory for each screen.
 
-4- util — Contains the utilities/common functions of your application.
+4- di — This directory contains locators for the services and repositories which are used in the project.
 
-5- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
+5- util — Contains the utilities/common functions of your application.
+
+6- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
 ```
 
 ---
@@ -72,6 +74,7 @@ All the business logic of your application will go into this directory, it repre
 
 ```
 data/
+|- encryption/
 |- local/
     |- constants/
 |- models/
@@ -98,6 +101,8 @@ di/
 |- service_locator.dart
 ```
 
+---
+
 ### UI
 
 This directory contains all the ui of your application. Each screen is located in a separate folder making it easy to combine group of files related to that particular screen. All the screen specific widgets will be placed in `widgets` directory as shown in the example below:
@@ -106,13 +111,21 @@ The global widget directory is used to place widgets which is used globally thro
 
 ```
 ui/
-|- global_widgets
+|- global_widgets/
+|- auth/
+  |- login/
+  |- register/
+  |- forgot_password/
+  |- reset_password/
+  |- controller.dart
+  |- binding.dart
 |- home
    |- home_page.dart
    |- controller.dart
    |- bindings.dart
    |- widgets
       |- button_widget.dart
+|- onboard/
 ```
 
 ### Utils
@@ -130,6 +143,8 @@ utils/
   |- app_translations.dart
 |- connection/
 |- platform/
+|- device/
+|- dio/
 ```
 
 ### Assets
@@ -149,9 +164,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
 
-  service.SystemChrome.setPreferredOrientations(
-      [service.DeviceOrientation.portraitUp]).then((_) {
-    runApp(const MyApp());
+  runZonedGuarded(() {
+    service.SystemChrome.setPreferredOrientations(
+        [service.DeviceOrientation.portraitUp]).then((_) {
+      runApp(const MyApp());
+    });
+  }, (error, stackTrace) {
+    debugPrint(error.toString());
+    debugPrint(stackTrace.toString());
   });
 }
 
@@ -167,8 +187,8 @@ class MyApp extends StatelessWidget {
         locale: const Locale('en', 'US'),
         fallbackLocale: const Locale('en', 'US'),
         title: 'Getx Boilerplate',
-        initialRoute: Routes.HOME,
-        theme: appThemeData,
+        initialRoute: Routes.ONBOARD,
+        theme: themeData,
         defaultTransition: Transition.fade,
         getPages: AppPages.pages,
         translationsKeys: AppTranslation.translations,
@@ -180,16 +200,4 @@ class MyApp extends StatelessWidget {
 
 ## Responsiveness
 
-The project is built with [flutter_screen_util], [responsive_builder] in order to make the application responsive.
-
-### Desktop : <br>
-
-<img src="md/images/desktop.png" width="500" height="320">
-
-### Tablet :<br>
-
-<img src="md/images/tablet.png" width="500" >
-
-### Mobile :
-
-<img src="md/images/mobile.png" width="500" >
+The project is built with `flutter_screen_util`, `responsive_builder` in order to make the application responsive.
