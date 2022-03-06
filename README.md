@@ -1,3 +1,6 @@
+# 🚨 This Repo is moved to Bitbucket. Find the link below:
+https://bitbucket.org/dhruv-nakum/flutter_boilerplate_getx/src/master/
+
 # Boilerplate Project
 
 A boilerplate project created in flutter using Getx. Boilerplate supports both web and mobile
